@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics's TIME! Grade 7, 8 & 9 By Group Onandro, Ricardo, Raysel, Jayden</title>
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', 'Times New Georgia', serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.8;
+            overflow-x: hidden;
+            
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/39/GodfreyKneller-IsaacNewton-1689.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-blend-mode: lighten;
+            background-color: rgba(255, 255, 255, 0.93); 
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #0033CC; 
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 5px solid #FFC000; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: bold; 
+            color: #ffffff; 
+            letter-spacing: 1px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .nav-links { list-style: none; display: flex; gap: 1rem; flex-wrap: wrap; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: #ffffff; 
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            cursor: pointer; 
+            transition: 0.3s; 
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        
+        .nav-links a:hover, .nav-links a.active { 
+            background: #FFC000; 
+            color: #002244; 
+        }
+
+        .page-content {
+            display: none;
+            padding: 120px 2rem 60px;
+            min-height: 100vh;
+            animation: fadeIn 0.4s ease-in-out;
+            flex-direction: column; 
+            align-items: center;
+            position: relative;
+        }
+
+        .page-content.active { display: flex; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cute-bg::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('image cute11.png'); 
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        #about.cute-bg::before {
+            background-size: contain; 
+            background-repeat: repeat; 
+        }
+
+        #home {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-box {
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 10px;
+            border-top: 5px solid #0033CC;
+            border-bottom: 5px solid #FFC000; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
+        .hero-box h1 {
+            font-size: 3rem;
+            color: #0033CC; 
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .full-width-header {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: -1rem;
+        }
+
+        .info-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            border-top: 4px solid #FFC000; 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            height: fit-content;
+        }
+
+        .info-card h2 {
+            color: #0033CC; 
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.5rem;
+        }
+        
+        .info-card h3 {
+            color: #FFC000; 
+            margin-top: 1rem;
+        }
+
+        .content-image {
+            width: 100%;
+            border-radius: 5px;
+            margin: 1rem 0;
+            border: 2px solid #0033CC;
+        }
+
+        .meme-gif {
+            width: 100%;
+            border-radius: 5px;
+            border: 4px inset #FFC000;
+            margin-top: 1rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            margin: 1.5rem 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 5px;
+            border: 2px solid #0033CC;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: #FFC000; 
+            color: #002244;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            margin: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            background: #0033CC; 
+            color: #ffffff;
+        }
+
+        .input-box {
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+            background: #fdfdfd;
+            color: #333;
+            width: 100%;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-family: 'Arial', sans-serif;
+        }
+        .input-box:focus {
+            border-color: #0033CC;
+            outline: none;
+        }
+
+        .big-nope {
+            font-size: 3.5rem;
+            color: #cc0000;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            animation: shake 0.4s ease-in-out infinite;
+        }
+        
+        .yay-party {
+            font-size: 4rem;
+            text-align: center;
+            animation: bounce 0.5s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-15px); }
+            50% { transform: translateX(15px); }
+            75% { transform: translateX(-15px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) { 
+            .container { grid-template-columns: 1fr; } 
+            .nav-links { gap: 0.5rem; }
+            .hero-box h1 { font-size: 2rem; }
+            .full-width-header { grid-column: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">SLJHS Physics Lab</div>
+        <ul class="nav-links">
+            <li><a onclick="showPage('home')" id="link-home" class="active">Home</a></li>
+            <li><a onclick="showPage('force')" id="link-force">Force & Momentum (Grade 7)</a></li>
+            <li><a onclick="showPage('sound')" id="link-sound">Sound & Waves (Grade 8)</a></li>
+            <li><a onclick="showPage('magnetism')" id="link-magnetism">Magnetism & Static Elec (Grade 9)</a></li>
+            <li><a onclick="showPage('quiz')" id="link-quiz">Quiz Time</a></li>
+            <li><a onclick="showPage('about')" id="link-about">About Us</a></li>
+            <li><a onclick="showPage('sources')" id="link-sources">Sources</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="page-content cute-bg active">
+        <div class="hero-box">
+            <h1>WELCOME PHYSICS AP</h1>
+            <h3 style="color: #0033CC; margin-bottom: 20px;">Grade 7, 8 & 9 Concepts</h3>
+            <p style="font-size: 1.5rem; font-style: italic; color: #FFC000; margin-bottom: 1rem;">"PHYSICS X ICT"</p>
+            <p style="margin-bottom: 2rem; font-family: Arial, sans-serif; font-weight: bold;">PAK ANTON AND SIR ARIES TOLD US TO DO THIS SO HERE WE ARE!</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn" onclick="showPage('force')">Learn Force & Momentum</button>
+                <button class="btn" onclick="showPage('sound')">Learn Sound & Waves</button>
+                <button class="btn" onclick="showPage('magnetism')">Learn Magnetism & Static</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORCE AND SOUND SECTIONS REMAIN UNCHANGED -->
+    <section id="force" class="page-content">
+        <h1 style="font-size: 3rem; color: #0033CC; margin-bottom: 10px;">Force and Momentum</h1>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #555;">Grade 7 Level Physics - Push it to the limit!</p>
+        
+        <div class="container">
+            <div>
+                <div class="info-card">
+                    <h2>What is Force?</h2>
+                    <p>Force is an external push or pull that causes an object to accelerate or change its motion. Force is described with Newton’s law. Newton’s first law of motion states that an object at rest will stay at rest unless acted upon by an unbalanced force. Newton’s second law of motion states that the acceleration of an object is dependent on the net force acting upon it and its mass. Newton’s third law states that for every action, there is an equal and opposite reaction. From Newton’s second law we can construct a formula force that equals mass times acceleration.</p>
+                    <p><br><strong>Formula:</strong> Force = Mass × Acceleration (F = ma)</p>
+                    <img src="image.png" alt="Force Diagram 1" class="content-image">
+                </div>
+
+                <div class="info-card">
+                    <h2>Force Variety</h2>
+                    <p>There are about 8 forces which includes applied force, spring force, drag force, frictional force, normal force, magnetic force, electric force, and gravitational force.</p>
+                    <img src="image copy 6.png" alt="Force Varieties" class="content-image">
+                </div>
+
+                <div class="info-card">
+                    <h2>Free Body Diagram</h2>
+                    <p>A free body diagram is a simplified illustration that shows an object or a free body isolated from its environment, with all the forces acting on it represented as arrows. The length of each arrow indicates the magnitude of the force, while the direction of the arrow shows the direction in which the force is acting.</p>
+                    <img src="image copy 8.png" alt="Free Body Diagram" class="content-image">
+                </div>
+            </div>
+
+            <div>
+                <div class="info-card">
+                    <h2>Momentum</h2>
+                    <p>Momentum is a measure of the motion of an object and is defined as the product of an object’s mass and velocity. Momentum is mass multiplied by velocity. A heavier or faster object has a greater momentum, making it harder to stop or change its motion.</p>
+                    <img src="image copy.png" alt="Momentum Diagram 2" class="content-image">
+                </div>
+
+                <div class="info-card">
+                    <h2>Relationship Between Them</h2>
+                    <p>Newton’s second law of motion states that force equals mass times acceleration. Mass times acceleration can be expressed as change in momentum divided by time or rate of change of momentum.</p>
+                    <img src="image copy 7.png" alt="Change in momentum formula" class="content-image">
+                    
+                    <h3 style="margin-top: 1.5rem;">Watch & Learn</h3>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/NIVNfI0RN2k" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h2>MEME TIME BABY</h2>
+                    <p>When you accidentally calculate the mass of the sun instead of the apple...</p>
+                    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2FwaGJtbnpzcW55aGNpdTV2c3MwMzcyam5peHNpbmhpOHI4enFmYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7btPCcdNniyf0ArS/giphy.gif" alt="Math headache meme" class="meme-gif">
+                    
+                    <p style="margin-top: 15px;">When the Momentum hits and you gotta run!</p>
+                    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjMzdjRjdGFqNWc3ZWRrMnBrcTh2ZHAxbWRxcWg1cnRwd3Y3OGhhZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2bUpP71bbVnZ3x7lgQ/giphy.gif" alt="Running meme" class="meme-gif">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sound" class="page-content">
+        <h1 style="font-size: 3rem; color: #0033CC; margin-bottom: 10px;">Sound and Waves</h1>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #555;">Grade 8 Level Physics Sound and Waves</p>
+        
+        <div class="container">
+            <div>
+                <div class="info-card">
+                    <h2>Vibrations & Propagation</h2>
+                    <p><strong>Vibrations:</strong> Sound begins with a vibration, which is a back and forth motion of particles in an object. Vibration is defined as a periodic motion that occurs when a system is displaced from its equilibrium position and allowed to respond to the force that restores it. This can be proved using a pendulum.</p>
+                    <img src="image copy 2.png" alt="Vibrations" class="content-image">
+                    
+                    <p><br><strong>Propagation:</strong> Sound travels as a longitudinal wave, meaning the particles of the medium move parallel to the direction of the wave’s travel. This is different from transverse waves, where the motion is perpendicular to the direction of propagation. Wave propagation refers to the movement and transmission of waves. Aside from longitudinal waves and transverse waves, mechanical waves and electromagnetic waves are also included but on different conditions and terms.</p>
+                    <img src="image copy 3.png" alt="Propagation" class="content-image">
+                </div>
+
+                <div class="info-card">
+                    <h2>Medium</h2>
+                    <p>Sound requires a medium to travel through; it cannot propagate in a vacuum. The speed of sound varies depending on the medium, being faster in solids than in liquids and faster in liquids than in gases. Medium is the material that allows energy, waves, or particles to propagate.</p>
+                    <img src="image copy 4.png" alt="Medium" class="content-image">
+                </div>
+            </div>
+
+            <div>
+                <div class="info-card">
+                    <h2>Wave Properties</h2>
+                    <p><strong>Frequency:</strong> Refers to how many times the wave oscillates per second, measured in Hertz (Hz). Frequency determines the pitch of the sound (higher frequency = higher pitch).</p>
+                    <img src="image33.png" alt="Frequency" class="content-image">
+                    
+                    <p><br><strong>Amplitude:</strong> The height of the wave, which relates to the loudness or intensity of the sound. Greater amplitude means a louder sound.</p>
+                    
+                    <p><br><strong>Wavelength:</strong> Distance between successive crests of a wave, which is inversely related to frequency. Shorter wavelengths correspond to higher frequencies.</p>
+                    <img src="image copy 5.png" alt="Wavelength" class="content-image">
+                </div>
+
+                <div class="info-card">
+                    <h2>MEME TIME</h2>
+                    <p>When the amplitude is way too high and the beat drops:</p>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwZk1b0uYuMCOn63srDbJ-diek6peCMq3IMg&s" alt="Speaker blowing away guy meme" class="meme-gif">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UPDATED MAGNETISM & STATIC ELECTRICITY SECTION -->
+    <section id="magnetism" class="page-content">
+        <h1 style="font-size: 3rem; color: #0033CC; margin-bottom: 10px;">Magnetism & Static Electricity</h1>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #555;">Grade 9 Level Physics - Attractive stuff!</p>
+        
+        <div class="container">
+            <!-- MAGNETISM PART -->
+            <div class="full-width-header">
+                <h2 style="font-size: 2.5rem; color: #FFC000; text-shadow: 1px 1px 2px #000;">Part 1: Magnetism</h2>
+            </div>
+
+            <div>
+                <div class="info-card">
+                    <h2>Definition</h2>
+                    <p>Magnets can attract materials that are made from magnetic materials but cannot attract materials that are made from non-magnetic materials.</p>
+                    <img src="image34.png" alt="Attraction and Repulsion" class="content-image">
+                </div>
+
+                <div class="info-card">
+                    <h2>Types of magnets</h2>
+                    <ul style="margin-left: 20px; margin-bottom: 15px;">
+                        <li><strong>Permanent Magnets:</strong> Magnets that are made from magnetically hard material, which keeps their magnetism once magnetised.</li>
+                        <li><strong>Temporary Magnets:</strong> Magnets that are made from magnetically soft material, which lose their magnetism easily.</li>
+                        <li><strong>Electromagnets:</strong> Magnets that need an electric current to work.</li>
+                    </ul>
+                    <img src="image35.png" alt="Types of Magnets" class="content-image">
+                </div>
+
+                <div class="info-card">
+                    <h2>Poles</h2>
+                    <p>There are two poles, north and south. If two similar poles are placed near each other, they repel. If two opposite poles are placed near each other, they attract.</p>
+                    <img src="image36.png" alt="Magnetic Poles" class="content-image">
+                </div>
+            </div>
+
+            <div>
+                <div class="info-card">
+                    <h2>Magnetic Fields</h2>
+                    <p>Magnetic fields are the volume of space in which we can detect magnetism. It can show the shape, direction, and size of the magnetic field.</p>
+                    <img src="image37.png" alt="Magnetic Field Lines" class="content-image">
+                </div>
+
+                <div class="info-card">
+                    <h2>Induced Magnetism</h2>
+                    <p>Induced magnetism is the temporary magnetization of a material when placed within a magnetic field. It causes magnetic domains to align, turning the material into a temporary magnet that is always attracted to the permanent magnet. Induced magnetism is lost when the material is removed from the field.</p>
+                    <img src="image38.png" alt="Induced Magnetism" class="content-image">
+                </div>
+
+                <div class="info-card">
+                    <h2>Demagnetization</h2>
+                    <p>The process of reducing or eliminating the remnant magnetization of a material by disrupting the alignment of its magnetic domains. Some examples include hammering and heating.</p>
+                    <img src="image39.png" alt="Demagnetization Methods" class="content-image">
+                </div>
+            </div>
+
+            <!-- STATIC ELECTRICITY PART -->
+            <div class="full-width-header" style="margin-top: 3rem;">
+                <h2 style="font-size: 2.5rem; color: #FFC000; text-shadow: 1px 1px 2px #000;">Part 2: Static Electricity</h2>
+            </div>
+
+            <div>
+                <div class="info-card">
+                    <h2>Charge Interaction & Law of Electrostatics</h2>
+                    <p><strong>Charge Interaction:</strong> When an electron meets a proton, they will create an electric force between them and the particles attract each other. When two electrons meet, they repel each other.</p>
+                    <p><strong>Law of Electrostatics:</strong> Like charges repel each other. Unlike charges attract each other.</p>
+                    <img src="image40.png" alt="Like charges repel, opposite charges attract" class="content-image">
+                </div>
+
+                <div class="info-card">
+                    <h2>Charge Methods</h2>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Triboelectric Charging:</strong> An object is rubbed with another object, resulting in electrons moving from one object to another.</li>
+                        <li><strong>Induction:</strong> Charging without making any contact.</li>
+                        <li><strong>Conduction:</strong> Charging with contact.</li>
+                        <li><strong>Discharging:</strong> The process of removing the excess charge on an object by means of the transfer of electrons between it and another object of substantial size.</li>
+                    </ul>
+                    <img src="image41.png" alt="Methods of charging" class="content-image">
+                </div>
+
+                <div class="info-card">
+                    <h2>Polarization</h2>
+                    <p>The process of separating the charges within an object into two different sides while keeping the object’s overall charge neutral.</p>
+                    <img src="image42.png" alt="Polarization" class="content-image">
+                </div>
+            </div>
+
+            <div>
+                <div class="info-card">
+                    <h2>Coulomb’s Law</h2>
+                    <p>Electrostatic force is the force between two electrical charges. It can be a force of attraction or repulsion.</p>
+                    <p>The magnitude of an electrostatic force depends on the magnitude of each charge (q) and the distance between them (r).</p>
+                    <ul style="margin-left: 20px;">
+                        <li>Larger the charges, larger the electrostatic force.</li>
+                        <li>Larger the distance of the charges, smaller the electrostatic force.</li>
+                    </ul>
+                    <img src="image43.png" alt="Coulomb's Law" class="content-image">
+                </div>
+
+                <div class="info-card">
+                    <h2>Electric Fields</h2>
+                    <p>Electric fields are areas surrounding a charged particle where other charges may experience a force.</p>
+                    <ul style="margin-left: 20px;">
+                        <li>Opposite charges brought towards each other experience an attractive force.</li>
+                        <li>Like charges brought towards each other experience a repulsive force.</li>
+                    </ul>
+                    <img src="image44.png" alt="Electric Fields" class="content-image">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- UPDATED QUIZ SECTION -->
+    <section id="quiz" class="page-content">
+        <div class="hero-box" style="width: 100%; max-width: 800px; text-align: left;">
+            <h1 style="font-size: 2.5rem; color: #0033CC; text-align: center;">The 12-Question Physics Quiz</h1>
+            <p style="margin-bottom: 2rem; text-align: center; font-style: italic;">Let's see if you actually read the material. Get > 6/12 to pass!</p>
+
+            <div id="quiz-form">
+                <h3>1. If a strong muscular man throws a 10 kg bowling ball and it accelerates at 2 m/s², what is the force?</h3>
+                <input type="number" id="q1" class="input-box" placeholder="Enter number (Newtons)...">
+
+                <h3>2. What is a vibration and how does it relate to sound?</h3>
+                <select id="q2" class="input-box">
+                    <option value="">Select answer...</option>
+                    <option value="wrong">It is magic that makes noise.</option>
+                    <option value="correct">A back and forth motion of particles that produces sound.</option>
+                    <option value="wrong">It's how fast the object moves in a straight line.</option>
+                </select>
+
+                <h3>3. What type of wave is a sound wave and how do particles move?</h3>
+                <select id="q3" class="input-box">
+                    <option value="">Select answer...</option>
+                    <option value="wrong">Transverse; particles move perpendicular.</option>
+                    <option value="correct">Longitudinal; particles move parallel to the wave's travel.</option>
+                    <option value="wrong">Electromagnetic; particles don't move.</option>
+                </select>
+
+                <h3>4. Why does sound need a medium to travel?</h3>
+                <select id="q4" class="input-box">
+                    <option value="">Select answer...</option>
+                    <option value="correct">Because it relies on the collision of particles to propagate.</option>
+                    <option value="wrong">Because it's afraid of the dark vacuum of space.</option>
+                    <option value="wrong">It doesn't need a medium, it can travel in a vacuum.</option>
+                </select>
+
+                <h3>5. How does the medium affect the speed of sound?</h3>
+                <select id="q5" class="input-box">
+                    <option value="">Select answer...</option>
+                    <option value="correct">It's faster in solids, slower in liquids, slowest in gases.</option>
+                    <option value="wrong">It's fastest in gases.</option>
+                    <option value="wrong">Medium doesn't affect speed at all.</option>
+                </select>
+
+                <h3>6. What is frequency and how does it affect pitch?</h3>
+                <select id="q6" class="input-box">
+                    <option value="">Select answer...</option>
+                    <option value="correct">Oscillations per second; higher frequency means higher pitch.</option>
+                    <option value="wrong">Wave height; higher frequency means louder sound.</option>
+                    <option value="wrong">Distance between waves; lower frequency means higher pitch.</option>
+                </select>
+
+                <h3>7. What is amplitude and how does it relate to sound?</h3>
+                <select id="q7" class="input-box">
+                    <option value="">Select answer...</option>
+                    <option value="wrong">The speed of the wave; makes sound faster.</option>
+                    <option value="correct">The height of the wave; greater amplitude means louder sound.</option>
+                    <option value="wrong">The pitch of the sound; greater amplitude means higher pitch.</option>
+                </select>
+
+                <h3>8. What is the formula for Momentum?</h3>
+                <select id="q8" class="input-box">
+                    <option value="">Select answer...</option>
+                    <option value="wrong">Mass / Velocity</option>
+                    <option value="correct">Mass x Velocity</option>
+                    <option value="wrong">Force x Acceleration</option>
+                </select>
+
+                <h3>9. A Free Body Diagram shows forces represented as what?</h3>
+                <select id="q9" class="input-box">
+                    <option value="">Select answer...</option>
+                    <option value="wrong">Circles</option>
+                    <option value="correct">Arrows</option>
+                    <option value="wrong">Squares</option>
+                </select>
+
+                <h3>10. Newton's Third Law states that for every action, there is a(n)...?</h3>
+                <select id="q10" class="input-box">
+                    <option value="">Select answer...</option>
+                    <option value="wrong">Unequal reaction</option>
+                    <option value="correct">Equal and opposite reaction</option>
+                    <option value="wrong">Change in mass</option>
+                </select>
+
+                <h3>11. According to the Law of Electrostatics, what happens when an electron meets a proton?</h3>
+                <select id="q11" class="input-box">
+                    <option value="">Select answer...</option>
+                    <option value="correct">They attract each other.</option>
+                    <option value="wrong">They repel each other.</option>
+                    <option value="wrong">Nothing happens.</option>
+                </select>
+
+                <h3>12. Which charging method involves charging an object without making any contact?</h3>
+                <select id="q12" class="input-box">
+                    <option value="">Select answer...</option>
+                    <option value="wrong">Conduction</option>
+                    <option value="correct">Induction</option>
+                    <option value="wrong">Triboelectric Charging</option>
+                </select>
+
+                <button class="btn" style="width: 100%; margin-top: 20px;" onclick="checkQuiz()">Submit Answers!</button>
+            </div>
+            
+            <div id="quiz-feedback" style="margin-top: 25px;"></div>
+        </div>
+    </section>
+
+    <section id="about" class="page-content cute-bg">
+        <h1 style="font-size: 3rem; color: #0033CC; margin-bottom: 20px;">About Us</h1>
+        <div class="info-card" style="max-width: 600px; text-align: center;">
+            <h2>The Team</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 1.5rem; font-family: Arial, sans-serif;">We are a group of dedicated SLJHS Students bringing you the best Physics experience on the entire web.</p>
+            
+            <ul style="list-style: none; font-size: 1.2rem; font-family: Arial, sans-serif; font-weight: bold; line-height: 2.2;">
+                <li>9A/20 Raysel "The Level 100 Coder" Setiabudi</li>
+                <li>9A/21 Ricardo "The Level 100 Leader" Dos Santos Hutauruk</li>
+                <li>9A/17 Onandro "The Level 100 Researcher" Tripino Hering</li>
+                <li>9A/11 Jayden "The Level 10 Crook" Ho</li>
+            </ul>
+            <img src="https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif" alt="Teamwork meme" class="meme-gif" style="margin-top: 2rem;">
+        </div>
+    </section>
+
+    <section id="sources" class="page-content">
+        <h1 style="font-size: 3rem; color: #0033CC; margin-bottom: 20px;">Sources & References</h1>
+        <div class="info-card" style="max-width: 800px;">
+            <h2>The References:</h2>
+            <ul style="line-height: 2.5; font-size: 1.2rem; font-family: Arial, sans-serif; word-break: break-all;">
+                <li>Google Classroom (Course Materials)</li>
+                <li><a href="https://www.canva.com/design/DAHDRtK1ULk/Sn6G-5RBe9mI0kZny3-DpQ/edit" target="_blank" style="color: #FFC000;">Canva Slides Presentation 1</a></li>
+                <li><a href="https://www.canva.com/design/DAHDCvkMD_4/UIwZttMoz9y5xXLqEE6P-g/edit" target="_blank" style="color: #FFC000;">Canva Slides Presentation 2</a></li>
+                <li><a href="https://www.intemag.com/magnetic-frequently-asked-questions" target="_blank" style="color: #FFC000;">InteMag - Magnetic FAQ</a></li>
+                <li><a href="https://wiscimuseum.org/the-history-of-magnetism/" target="_blank" style="color: #FFC000;">WiSci Museum - History of Magnetism</a></li>
+                <li><a href="https://www.stanfordmagnets.com/6-uses-of-permanent-magnets-in-everyday-life.html" target="_blank" style="color: #FFC000;">Stanford Magnets - Uses of Magnets</a></li>
+                <li><a href="https://www.scribd.com/document/515862118/Definition-of-Measurement-in-physics" target="_blank" style="color: #FFC000;">Scribd - Definition of Measurement</a></li>
+                <li>YouTube - <a href="https://youtu.be/NIVNfI0RN2k" target="_blank" style="color: #FFC000;">The Organic Chemistry Tutor (Physics)</a></li>
+                <li>YouTube - <a href="https://www.youtube.com/watca" target="_blank" style="color: #FFC000;">Magnetism & Static Electricity</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+      
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            document.getElementById('link-' + pageId).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+    
+        function checkQuiz() {
+            let score = 0;
+            
+            if(document.getElementById('q1').value == 20) score++;
+            if(document.getElementById('q2').value === "correct") score++;
+            if(document.getElementById('q3').value === "correct") score++;
+            if(document.getElementById('q4').value === "correct") score++;
+            if(document.getElementById('q5').value === "correct") score++;
+            if(document.getElementById('q6').value === "correct") score++;
+            if(document.getElementById('q7').value === "correct") score++;
+            if(document.getElementById('q8').value === "correct") score++;
+            if(document.getElementById('q9').value === "correct") score++;
+            if(document.getElementById('q10').value === "correct") score++;
+            if(document.getElementById('q11').value === "correct") score++;
+            if(document.getElementById('q12').value === "correct") score++;
+
+            let feedback = document.getElementById('quiz-feedback');
+            let form = document.getElementById('quiz-form');
+            
+            if (score > 6) {
+                // PASS SCENARIO!
+                form.style.display = "none"; 
+                feedback.innerHTML = `
+                    <div class="yay-party">YAY 🎉🎉🎉</div>
+                    <img src="https://media.giphy.com/media/t2xcrqU1BqRVe/giphy.gif" alt="Party Time" style="width:100%; max-width:400px; display:block; margin: 0 auto; border-radius: 10px;">
+                `;
+                
+                setTimeout(() => {
+                    form.style.display = "block"; 
+                    feedback.innerHTML = `<h2 style="color: #2e8b57; text-align: center;">🎉 Score: ${score}/12! You Passed! Great job genius! 🎉</h2>`;
+                }, 1500);
+
+            } else {
+                // FAIL SCENARIO
+                form.style.display = "none"; 
+                feedback.innerHTML = `<div class="big-nope">NOPE!</div>
+                                      <p style="text-align: center; margin-top: 15px; font-weight:bold; font-size: 1.5rem;">Score: ${score}/12. GO BACK TO LEARNING!</p>
+                                      <p style="text-align: center; font-style: italic;">Redirecting you to the textbook in 3 seconds...</p>`;
+                
+                setTimeout(() => {
+                    form.style.display = "block"; 
+                    feedback.innerHTML = ""; 
+                    showPage('magnetism'); 
+                }, 3500);
+            }
+        }
+    </script>
+</body>
+</html>
